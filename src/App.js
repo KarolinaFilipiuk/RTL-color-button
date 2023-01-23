@@ -2,8 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
-import { logRoles } from '@testing-library/dom';
-
 const App = () => {
   const [isBlue, setIsBlue] = useState(true);
   const [isDisabled, setIsDidabled] = useState(false);
@@ -20,7 +18,9 @@ const App = () => {
     <div>
       <button
         onClick={handleClick}
-        style={{ backgroundColor: isBlue ? 'blue' : 'red' }}
+        style={{
+          backgroundColor: isDisabled ? 'gray' : isBlue ? 'blue' : 'red',
+        }}
         name={isBlue ? 'Change to red' : 'Change to blue'}
         disabled={isDisabled}
       >
@@ -31,6 +31,7 @@ const App = () => {
         id="disable-button-checkbox"
         onClick={handleChecked}
       />
+      <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
   );
 };
