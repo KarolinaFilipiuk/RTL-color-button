@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App';
+import App, { replaceCamelWIthSpaces } from './App';
 import { logRoles } from '@testing-library/dom';
 
 describe(App, () => {
@@ -69,5 +69,19 @@ describe(App, () => {
 
     fireEvent.click(checkbox);
     expect(button).toHaveStyle({ backgroundColor: 'red' });
+  });
+});
+
+describe('spaces before camel-case capital letters', () => {
+  test('Works for no inner capital letters', () => {
+    expect(replaceCamelWIthSpaces('Red')).toBe('Red');
+  });
+
+  test('Works for one inner capital letter', () => {
+    expect(replaceCamelWIthSpaces('MidnightBlue')).toBe('Midnight Blue');
+  });
+
+  test('Works for multiple inner capital letters', () => {
+    expect(replaceCamelWIthSpaces('MediumVioletRed')).toBe('Medium Violet Red');
   });
 });

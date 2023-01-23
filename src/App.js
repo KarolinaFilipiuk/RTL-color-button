@@ -1,6 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+
+export function replaceCamelWIthSpaces(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, ' $1');
+}
 
 const App = () => {
   const [isBlue, setIsBlue] = useState(true);
