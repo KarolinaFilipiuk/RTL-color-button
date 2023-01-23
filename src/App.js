@@ -1,25 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
-function App() {
+import { logRoles } from '@testing-library/dom';
+
+const App = () => {
+  const [isBlue, setIsBlue] = useState(true);
+  const [isDisabled, setIsDidabled] = useState(false);
+
+  const handleClick = () => {
+    setIsBlue(!isBlue);
+  };
+
+  const handleChecked = () => {
+    setIsDidabled(!isDisabled);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button
+        onClick={handleClick}
+        style={{ backgroundColor: isBlue ? 'blue' : 'red' }}
+        name={isBlue ? 'Change to red' : 'Change to blue'}
+        disabled={isDisabled}
+      >
+        {isBlue ? 'Change to red' : 'Change to blue'}
+      </button>
+      <input
+        type="checkbox"
+        id="disable-button-checkbox"
+        onClick={handleChecked}
+      />
     </div>
   );
-}
+};
 
 export default App;
